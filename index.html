@@ -78,6 +78,9 @@
   }
   input:focus, select:focus, textarea:focus{outline:2px solid var(--amber); outline-offset:1px;}
   textarea{resize:vertical; min-height:70px;}
+  .req{color:var(--amber);}
+  .req-note{font-size:12.5px; color:var(--ink-dim);}
+  input:user-invalid{border-color:#c0504d;}
   form .btn{align-self:flex-start; margin-top:6px;}
 
   .list-notes{display:flex; flex-direction:column; gap:18px;}
@@ -153,22 +156,24 @@
         </div>
       </div>
       <form id="carForm" name="car-search" method="POST" data-netlify="true">
+        <div><label for="cname">Your name <span class="req" aria-hidden="true">*</span></label><input id="cname" name="name" type="text" autocomplete="name" required></div>
         <div class="frow">
-          <div><label for="budget">Budget (USD)</label><input id="budget" name="budget" type="text" placeholder="e.g. 12,000"></div>
+          <div><label for="budget">Budget (USD) <span class="req" aria-hidden="true">*</span></label><input id="budget" name="budget" type="text" inputmode="numeric" placeholder="e.g. 12,000" required></div>
           <div><label for="year">Year range</label><input id="year" name="year-range" type="text" placeholder="e.g. 2016–2019"></div>
         </div>
         <div class="frow">
-          <div><label for="make">Make</label><input id="make" name="make" type="text" placeholder="e.g. Toyota"></div>
-          <div><label for="model">Model</label><input id="model" name="model" type="text" placeholder="e.g. Highlander"></div>
+          <div><label for="make">Make <span class="req" aria-hidden="true">*</span></label><input id="make" name="make" type="text" placeholder="e.g. Toyota" required></div>
+          <div><label for="model">Model <span class="req" aria-hidden="true">*</span></label><input id="model" name="model" type="text" placeholder="e.g. Highlander" required></div>
         </div>
         <div>
           <label for="notes">Must-haves</label>
           <textarea id="notes" name="must-haves" placeholder="Mileage limit, color, trim, features..."></textarea>
         </div>
         <div>
-          <label for="contact">Best way to reach you</label>
+          <label for="contact">Best way to reach you <span class="req" aria-hidden="true">*</span></label>
           <input id="contact" name="contact" type="text" required placeholder="Phone or email">
         </div>
+        <span class="req-note"><span class="req">*</span> Required</span>
         <button type="submit" class="btn btn-primary">Submit search request</button>
       </form>
     </div>
@@ -187,12 +192,14 @@
         <div class="item"><b>Interior & electronics</b><span>Seats, dash clusters, modules, wiring.</span></div>
       </div>
       <form id="partsForm" name="parts-request" method="POST" data-netlify="true">
+        <div><label for="pname">Your name <span class="req" aria-hidden="true">*</span></label><input id="pname" name="name" type="text" autocomplete="name" required></div>
         <div class="frow">
-          <div><label for="pveh">Vehicle (year/make/model)</label><input id="pveh" name="vehicle" type="text" placeholder="e.g. 2018 Honda Civic"></div>
-          <div><label for="ppart">Part needed</label><input id="ppart" name="part-needed" type="text" placeholder="e.g. Front bumper"></div>
+          <div><label for="pveh">Vehicle (year/make/model) <span class="req" aria-hidden="true">*</span></label><input id="pveh" name="vehicle" type="text" placeholder="e.g. 2018 Honda Civic" required></div>
+          <div><label for="ppart">Part needed <span class="req" aria-hidden="true">*</span></label><input id="ppart" name="part-needed" type="text" placeholder="e.g. Front bumper" required></div>
         </div>
-        <div><label for="pcontact">Best way to reach you</label><input id="pcontact" name="contact" type="text" placeholder="Phone or email" required></div>
+        <div><label for="pcontact">Best way to reach you <span class="req" aria-hidden="true">*</span></label><input id="pcontact" name="contact" type="text" placeholder="Phone or email" required></div>
         <div><label for="pnotes">Details</label><textarea id="pnotes" name="details" placeholder="Color, trim level, VIN if known..."></textarea></div>
+        <span class="req-note"><span class="req">*</span> Required</span>
         <button type="submit" class="btn btn-primary">Request this part</button>
       </form>
     </div>
